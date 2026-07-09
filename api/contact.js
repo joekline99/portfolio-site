@@ -38,6 +38,8 @@ export default async function handler(request, response) {
   });
 
   if (!emailResponse.ok) {
+    const errorText = await emailResponse.text();
+    console.error("Resend email error", emailResponse.status, errorText);
     return response.status(500).json({ error: "Email could not be sent" });
   }
 
