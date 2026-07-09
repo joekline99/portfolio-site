@@ -568,26 +568,66 @@ h3 {
   cursor: pointer;
 }
 
-.contact-links {
+.contact-form {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
-.contact-links a,
-.contact-links span {
-  min-height: 66px;
-  display: flex;
-  align-items: center;
-  padding: 0 18px;
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field label {
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 16px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  color: var(--white);
   background: rgba(255, 255, 255, 0.04);
+  font: inherit;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 0;
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.contact-submit {
+  width: max-content;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.form-status {
+  min-height: 24px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
   overflow-wrap: anywhere;
 }
 
-.contact-links a:hover {
+.form-status.is-success {
   color: var(--white);
-  border-color: var(--line-strong);
+}
+
+.form-status.is-error {
+  color: #ffb3b3;
 }
 
 .site-footer {

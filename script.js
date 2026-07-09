@@ -114,3 +114,41 @@ document.addEventListener("keydown", (event) => {
     closeLightbox();
   }
 });
+
+const contactForm = document.querySelector("[data-contact-form]");
+const formStatus = document.querySelector("[data-form-status]");
+
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector("button[type='submit']");
+    const formData = new FormData(contactForm);
+    const payload = Object.fromEntries(formData.entries());
+
+    formStatus.textContent = "Sending...";
+    formStatus.classList.remove("is-success", "is-error");
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Message could not be sent.");
+      }
+
+      contactForm.reset();
+      formStatus.textContent = "Thanks. Your message was sent.";
+      formStatus.classList.add("is-success");
+    } catch (error) {
+      formStatus.textContent = "Sorry, the message could not be sent right now.";
+      formStatus.classList.add("is-error");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}

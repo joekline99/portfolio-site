@@ -6,10 +6,10 @@
     <title>Joseph Kline | Student Portfolio</title>
     <meta
       name="description"
-      content="Joseph Kline is an HBA student at the Richard Ivey School of Business and is interested in entrepreneurship, investing, music, and sports."
+      content="Joseph Kline is an HBA1 student at the Richard Ivey School of Business and is interested in entrepreneurship, investing, music, and sports."
     >
     <link rel="preload" href="assets/hero-background.png" as="image">
-    <link rel="stylesheet" href="styles.css?v=music-sports-fill">
+    <link rel="stylesheet" href="styles.css?v=contact-form">
   </head>
   <body>
     <header class="site-header" data-header>
@@ -214,10 +214,22 @@
         <div class="section-label">Contact</div>
         <div class="two-column">
           <h2>Connect.</h2>
-          <div class="contact-links reveal">
-            <a href="mailto:klinejoe99@gmail.com">Email: klinejoe99@gmail.com</a>
-            <a href="tel:+16479879511">Phone: 647-987-9511</a>
-          </div>
+          <form class="contact-form reveal" data-contact-form>
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="button primary contact-submit" type="submit">Send Message</button>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
         </div>
       </section>
     </main>
@@ -227,6 +239,6 @@
       <a href="#top">Back to top</a>
     </footer>
 
-    <script src="script.js?v=image-lightbox"></script>
+    <script src="script.js?v=contact-form"></script>
   </body>
 </html>
